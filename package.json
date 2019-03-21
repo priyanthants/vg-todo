@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "serve": "node build/server.js",
-    "build": "npm run tsc && npm run serve",
+    "start": "node build/server.js",
+    "build": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
