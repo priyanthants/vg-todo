@@ -55,7 +55,7 @@ class Controller {
         const data: any = request.body;
         let todo: any = todos.filter(ele => ele.id == id)[0];
         if (todo) {
-            data.employeeId = todo.employeeId;
+            data.id = todo.id;
             todos[todos.indexOf(todo)] = data;
             response.send(true);
         }
