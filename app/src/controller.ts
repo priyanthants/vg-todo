@@ -24,9 +24,9 @@ class Controller {
 
     getOneTodo = (request: express.Request, response: express.Response) => {
         let id: number = request.params.id;
-        let employee: any = todos.filter(ele => ele.employeeId == id)[0];
-        if (employee) {
-            response.send(employee);
+        let todo: any = todos.filter(ele => ele.id == id)[0];
+        if (todo) {
+            response.send(todo);
         } else {
             response.send("Todo not Found.");
         }
@@ -34,9 +34,9 @@ class Controller {
 
     deleteTodo = (request: express.Request, response: express.Response) => {
         let id: number = request.params.id;
-        let employee: any = todos.filter(ele => ele.employeeId == id)[0];
-        if (employee) {
-            todos.splice(todos.indexOf(employee), 1);
+        let todo: any = todos.filter(ele => ele.id == id)[0];
+        if (todo) {
+            todos.splice(todos.indexOf(todo), 1);
             response.send(true);
         } else {
             response.send(false);
@@ -44,19 +44,19 @@ class Controller {
     }
 
     createATodo = (request: express.Request, response: express.Response) => {
-        const employee: any = request.body;
-        employee.employeeId = todos.length + 1;
-        todos.push(employee);
-        response.send(employee);
+        const todo: any = request.body;
+        todo.id = todos.length + 1;
+        todos.push(todo);
+        response.send(todo);
     }
 
     updateATodo = (request: express.Request, response: express.Response) => {
         let id: number = request.params.id;
         const data: any = request.body;
-        let employee: any = todos.filter(ele => ele.employeeId == id)[0];
-        if (employee) {
-            data.employeeId = employee.employeeId;
-            todos[todos.indexOf(employee)] = data;
+        let todo: any = todos.filter(ele => ele.id == id)[0];
+        if (todo) {
+            data.employeeId = todo.employeeId;
+            todos[todos.indexOf(todo)] = data;
             response.send(true);
         }
         response.send(false);
